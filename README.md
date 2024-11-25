@@ -4,12 +4,12 @@ Welcome to the **Machine Learning Projects Collection** repository! 🎉
 This repository contains various Machine Learning (ML) projects I have worked on. Each project includes details about the approach, dataset, methods applied, and insights gained.
 
 ## Table of Contents
-1. [Introduction](##introduction)
-2. [Projects List](##projects-list)
-3. [System Requirements](##system-requirements)
-4. [How to Use](##how-to-use)
-5. [Contributing](##contributing)
-6. [License](##license)
+1. [Introduction](#introduction)
+2. [Projects List](#projects-list)
+3. [System Requirements](#system-requirements)
+4. [How to Use](#how-to-use)
+5. [Contributing](#contributing)
+6. [License](#license)
 
 ---
 
@@ -20,7 +20,6 @@ Each project comes with its own **README** file that provides:
 - A project description
 - Methods and models used
 - Model evaluation results
-- Insights from data analysis
 
 ---
 
