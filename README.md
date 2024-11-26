@@ -39,7 +39,7 @@ Here is a list of the projects included in this repository:
 2. **Rock Paper Scissors Classification**
    - **Models:** Neural Network
    - **Dataset:** Rock Paper Scissors Dataset
-   - **Description:** Develop a model that accurately classifies images into one of three categories: Rock, Paper, or Scissors..
+   - **Description:** Develop a model that accurately classifies images into one of three categories: Rock, Paper, or Scissors.
 
 ---
 
