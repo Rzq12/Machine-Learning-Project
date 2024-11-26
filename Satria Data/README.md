@@ -1,11 +1,8 @@
 # Table of Contents
 
-1. [Introduction](#introduction)
-2. [Projects List](#projects-list)
-3. [System Requirements](#system-requirements)
-4. [How to Use](#how-to-use)
-5. [Contributing](#contributing)
-6. [License](#license)
+1. [Project Description](#Project-Description)
+2. [Methods and Models](#Methods-and-Models)
+3. [Model Evaluation Results](#Model-Evaluation-Results)
 
 # Project Description
 
