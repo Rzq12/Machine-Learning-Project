@@ -4,6 +4,7 @@ Welcome to the **Machine Learning Projects Collection** repository! 🎉
 This repository contains various Machine Learning (ML) projects I have worked on. Each project includes details about the approach, dataset, methods applied, and insights gained.
 
 ## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Projects List](#projects-list)
 3. [System Requirements](#system-requirements)
@@ -14,9 +15,11 @@ This repository contains various Machine Learning (ML) projects I have worked on
 ---
 
 ## Introduction
+
 Machine Learning is a field I am passionate about, and this repository serves as a documentation of my journey in building, testing, and deploying ML models. The projects cover various ML techniques, including supervised, unsupervised, and deep learning approaches.
 
 Each project comes with its own **README** file that provides:
+
 - A project description
 - Methods and models used
 - Model evaluation results
@@ -24,23 +27,33 @@ Each project comes with its own **README** file that provides:
 ---
 
 ## Projects List
+
 Here is a list of the projects included in this repository:
 
-1. **Twitter Sentiment Classification**  
-   - **Models:** Logistic Regression, Random Forest  
-   - **Dataset:** Twitter Sentiment Dataset  
-   - **Description:** Analyzing 8 label from tweets.  
+1. **Twitter Sentiment Classification**
+
+   - **Models:** Logistic Regression, Random Forest
+   - **Dataset:** Twitter Sentiment Dataset
+   - **Description:** Analyzing 8 label from tweets.
+
+2. **Rock Paper Scissors Classification**
+   - **Models:** Neural Network
+   - **Dataset:** Rock Paper Scissors Dataset
+   - **Description:** Develop a model that accurately classifies images into one of three categories: Rock, Paper, or Scissors..
 
 ---
 
 ## System Requirements
+
 To run these projects, you will need the following:
-- Python 3.7+  
-- Pandas, NumPy, Matplotlib, Scikit-learn  
-- Jupyter Notebook 
+
+- Python 3.7+
+- Pandas, NumPy, Matplotlib, Scikit-learn
+- Jupyter Notebook
 - TensorFlow / PyTorch (for deep learning)
 
 You can install all dependencies with the following command:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -48,6 +61,7 @@ pip install -r requirements.txt
 ---
 
 ## How to Use
+
 1. Clone this repository:
    ```bash
    git clone https://github.com/Rzq12/Machine-Learning-Project.git
@@ -68,7 +82,9 @@ pip install -r requirements.txt
 ---
 
 ## Contributing
+
 Contributions are welcome! If you have suggestions, improvements, or new projects to add:
+
 1. Fork this repository.
 2. Create a new feature branch:
    ```bash
@@ -79,6 +95,7 @@ Contributions are welcome! If you have suggestions, improvements, or new project
 ---
 
 ## License
+
 This repository is licensed under the [MIT License](LICENSE). Feel free to use and modify the code for any purpose.
 
 ---
