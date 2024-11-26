@@ -30,3 +30,60 @@ The dataset provided for this project contains complete tweet texts along with t
 - **Polarization Mapping**: Understanding polarization dynamics through network and sentiment analysis.
 
 The solutions developed in this project aim to address these challenges creatively and innovatively, contributing to a deeper understanding of electoral dynamics in Indonesia.
+
+# Methods and Models
+
+This project utilizes advanced machine learning methods and embedding techniques to classify tweets related to the **2024 Indonesian Presidential Election** into categories based on the **Astagatra Framework**. The combination of embedding techniques and robust classification models ensures high performance in handling complex and unstructured data like tweets.
+
+### 1. Embedding Method: **BERT (Bidirectional Encoder Representations from Transformers)**
+
+To capture the semantic meaning and contextual nuances of the tweets, the **BERT** embedding model is used.
+
+- **Why BERT?**
+
+  - BERT is a state-of-the-art transformer-based language model that generates high-quality embeddings by understanding the context of words in a bidirectional manner.
+  - It handles challenges such as:
+    - **Ambiguity**: Deriving meaning from context.
+    - **Sarkasme**: Detecting implied meanings.
+    - **Noise in Text**: Addressing typos and colloquial expressions common in social media.
+
+- **Process**:  
+  Each tweet is tokenized and passed through the BERT model to produce dense vector representations. These embeddings serve as input features for the classification models.
+
+---
+
+### 2. Classification Models
+
+Two machine learning models were implemented to classify the BERT embeddings into the eight Astagatra classes:
+
+#### a. **Logistic Regression**
+
+- A simple yet effective linear model that predicts class probabilities based on the input features.
+- **Advantages**:
+  - Fast and computationally efficient.
+  - Suitable for handling linearly separable classes.
+
+#### b. **Random Forest**
+
+- An ensemble learning method that builds multiple decision trees and combines their predictions to improve accuracy and robustness.
+- **Advantages**:
+  - Handles non-linear relationships in data.
+  - Resistant to overfitting due to averaging across multiple trees.
+
+---
+
+### 3. Model Comparison
+
+- Logistic Regression and Random Forest models were trained and evaluated using metrics such as accuracy, precision, recall, and F1-score.
+- Random Forest typically performs better in handling complex patterns in the data, while Logistic Regression provides a baseline for comparison.
+
+---
+
+### 4. Workflow Summary
+
+1. **Data Preprocessing**: Tweets are cleaned and tokenized.
+2. **Feature Extraction**: BERT embeddings are generated for each tweet.
+3. **Model Training**: Both Logistic Regression and Random Forest are trained using the extracted embeddings.
+4. **Evaluation**: Models are evaluated using labeled data to measure classification performance.
+
+This combination of methods and models ensures a robust approach to tackling the challenges of classifying tweets into multiple categories effectively.
