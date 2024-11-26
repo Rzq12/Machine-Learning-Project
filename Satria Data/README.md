@@ -124,7 +124,3 @@ Further improvements could be explored by:
 
 - Fine-tuning the BERT embeddings for this specific dataset.
 - Experimenting with more advanced models like gradient boosting or deep learning classifiers.
-
----
-
-Tambahkan bagian ini untuk memberikan wawasan tentang hasil evaluasi model Anda dalam proyek ini.
