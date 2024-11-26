@@ -1,3 +1,12 @@
+# Table of Contents
+
+1. [Introduction](#introduction)
+2. [Projects List](#projects-list)
+3. [System Requirements](#system-requirements)
+4. [How to Use](#how-to-use)
+5. [Contributing](#contributing)
+6. [License](#license)
+
 # Project Description
 
 Social media has become a vast and diverse source of data, enabling comprehensive analysis of public dynamics and opinions. During the Indonesian presidential campaign season, the intensity of activity on platforms like **X (formerly Twitter)** increases significantly. These platforms serve as vital arenas for communication, mass mobilization, and ideological debates. The data generated during these campaigns provide valuable insights into voter behavior, public sentiment, and the dynamics of the elections.
@@ -87,3 +96,38 @@ Two machine learning models were implemented to classify the BERT embeddings int
 4. **Evaluation**: Models are evaluated using labeled data to measure classification performance.
 
 This combination of methods and models ensures a robust approach to tackling the challenges of classifying tweets into multiple categories effectively.
+
+# Model Evaluation Results
+
+The models were evaluated on their ability to classify tweets into the eight classes of the **Astagatra Framework**. The evaluation was based on the **accuracy metric**, which measures the proportion of correct predictions made by the model.
+
+### Performance Summary
+
+| **Model**           | **Accuracy** |
+| ------------------- | ------------ |
+| Logistic Regression | 0.711        |
+| Random Forest       | 0.736        |
+
+### Insights
+
+1. **Logistic Regression**:
+
+   - Achieved an accuracy of **71.1%**, demonstrating its effectiveness as a baseline model.
+   - While efficient and fast, its performance was slightly limited when handling the complex patterns in the dataset.
+
+2. **Random Forest**:
+   - Outperformed Logistic Regression with an accuracy of **73.6%**.
+   - The ensemble nature of Random Forest allowed it to better capture the non-linear relationships in the data, making it more robust for this task.
+
+### Conclusion
+
+The evaluation results indicate that Random Forest is a more suitable model for this classification task, given its ability to handle complex patterns and higher accuracy. However, Logistic Regression remains a strong baseline for comparison due to its simplicity and computational efficiency.
+
+Further improvements could be explored by:
+
+- Fine-tuning the BERT embeddings for this specific dataset.
+- Experimenting with more advanced models like gradient boosting or deep learning classifiers.
+
+---
+
+Tambahkan bagian ini untuk memberikan wawasan tentang hasil evaluasi model Anda dalam proyek ini.
