@@ -37,9 +37,15 @@ Here is a list of the projects included in this repository:
    - **Description:** Analyzing 8 label from tweets.
 
 2. **Rock Paper Scissors Classification**
+
    - **Models:** Neural Network
    - **Dataset:** Rock Paper Scissors Dataset
    - **Description:** Develop a model that accurately classifies images into one of three categories: Rock, Paper, or Scissors.
+
+3. **Obesity Classification**
+   - **Models:** Gradient Boosting, Decision Tree, Neural Network
+   - **Dataset:** Obesity Dataset
+   - **Description:** This project aims to leverage machine learning to classify different types of obesity based on factors influencing its development. By using predictive modeling, the project seeks to provide insights into obesity risk categories, which could serve as a foundation for early intervention strategies.
 
 ---
 
