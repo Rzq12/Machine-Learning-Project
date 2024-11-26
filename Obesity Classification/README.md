@@ -140,3 +140,44 @@ The following tools and libraries were used:
 - **TensorFlow/Keras**: For building, training, and tuning the neural network model.
 
 By incorporating Grid Search for hyperparameter optimization, the project ensures that each model achieves its best possible performance, providing a robust framework for obesity risk classification.
+
+---
+
+# Model Evaluation Results
+
+The table below summarizes the performance of different machine learning models on both **raw data** and **SMOTE data** for the obesity risk classification task. The evaluation metrics include **CV Mean Accuracy**, **Test Accuracy**, **Precision**, **Recall**, and **F1-Score**.
+
+### 1. Results on Raw Data
+
+| Method                | CV Mean Accuracy | Test Accuracy | Precision | Recall | F1-Score |
+| --------------------- | ---------------- | ------------- | --------- | ------ | -------- |
+| **Decision Tree**     | 0.7486           | 0.7600        | 0.7285    | 0.7600 | 0.7256   |
+| **Gradient Boosting** | 0.8342           | 0.7800        | 0.7594    | 0.7800 | 0.7556   |
+| **Neural Network**    | 0.4878           | 0.6900        | 0.4044    | 0.5843 | 0.4649   |
+
+### 2. Results on SMOTE Data
+
+| Method                | CV Mean Accuracy | Test Accuracy | Precision | Recall | F1-Score |
+| --------------------- | ---------------- | ------------- | --------- | ------ | -------- |
+| **Decision Tree**     | 0.9295           | 0.9409        | 0.9417    | 0.9409 | 0.9411   |
+| **Gradient Boosting** | 0.9621           | 0.9622        | 0.9624    | 0.9622 | 0.9621   |
+| **Neural Network**    | 0.7141           | 0.9031        | 0.7852    | 0.7863 | 0.7801   |
+
+---
+
+### Key Insights:
+
+1. **Raw Data**:
+
+   - Gradient Boosting outperformed other methods in terms of both **CV Mean Accuracy** (0.8342) and **Test Accuracy** (0.7800).
+   - Decision Tree achieved decent performance but lagged behind Gradient Boosting.
+   - Neural Network struggled with raw data, achieving the lowest metrics due to imbalanced class distribution.
+
+2. **SMOTE Data**:
+   - Gradient Boosting demonstrated the best overall performance, with the highest **Test Accuracy** (0.9622), **Precision**, **Recall**, and **F1-Score**.
+   - Decision Tree also performed well on SMOTE data, achieving comparable metrics to Gradient Boosting.
+   - Neural Network showed significant improvement compared to raw data, indicating the benefits of addressing class imbalance using SMOTE.
+
+### Conclusion:
+
+Using SMOTE data significantly improved the performance of all models, especially for the Neural Network and Decision Tree. Gradient Boosting consistently outperformed other models on both raw and SMOTE data, making it the most reliable method for this classification task.
