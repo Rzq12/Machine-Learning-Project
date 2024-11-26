@@ -40,7 +40,7 @@ This research not only demonstrates the application of machine learning in tackl
 
 ---
 
-# Models and Methods
+# Methods and Models
 
 This project explores machine learning algorithms to classify different types of obesity based on various contributing factors. The methodology focuses on leveraging both classical and advanced approaches, enhanced by hyperparameter tuning using Grid Search, to assess performance on raw and augmented datasets.
 
