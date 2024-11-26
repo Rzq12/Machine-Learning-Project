@@ -84,7 +84,7 @@ To ensure the data is ready for modeling and that the results are meaningful, th
    - A deep learning approach capable of capturing complex, non-linear patterns in data.
    - Architecture:
      - **Input Layer**: Receives the preprocessed features.
-     - **Hidden Layers**: Includes fully connected layers with activation functions Selu.
+     - **Hidden Layers**: Includes fully connected layers with activation functions Selu and Hard Sigmoid.
      - **Output Layer**: Uses a softmax activation function for multi-class classification.
    - Strengths: Handles complex relationships, works well with large datasets.
    - Weaknesses: Requires significant computational resources and longer training times.
