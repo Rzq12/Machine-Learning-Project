@@ -30,7 +30,7 @@ Each project comes with its own **README** file that provides:
 
 Here is a list of the projects included in this repository:
 
-1. **Twitter Sentiment Classification**
+1. [**Twitter Sentiment Classification**](https://github.com/Rzq12/Machine-Learning-Project/tree/main/Satria%20Data)
 
    - **Models:** Logistic Regression, Random Forest
    - **Dataset:** Twitter Sentiment Dataset
