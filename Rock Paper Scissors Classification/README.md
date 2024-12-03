@@ -26,7 +26,7 @@ The project utilizes a dataset consisting of labeled images for the three classe
 
 1. **Rock**: Represented by a closed fist.
 2. **Paper**: Represented by an open hand.
-3. **Scissors**: Represented by a V-shaped gesture using two fingers.
+3. **Scissors**: Represented by a V-shaped gesture
 
 The dataset includes diverse samples to account for variations in:
 
@@ -109,7 +109,6 @@ The model is trained using the following steps:
 The trained model is evaluated on a test dataset using the following metrics:
 
 - **Accuracy**: Proportion of correctly classified images.
-- **Precision, Recall, F1-Score**: Measure class-specific performance to ensure balanced predictions across all three categories.
 
 ---
 
