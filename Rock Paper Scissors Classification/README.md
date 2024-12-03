@@ -75,7 +75,7 @@ A **Convolutional Neural Network (CNN)** is used as the backbone for this image 
   Extract local patterns such as edges, curves, and textures from input images.
 
 - **Pooling Layers**:  
-  Reduce the spatial dimensions of feature maps to make the model computationally efficient and prevent overfitting.
+  Reduce the spatial dimensions of feature maps to make the model computationally efficient and prevent overfittin
 
 - **Fully Connected Layers**:  
   Flatten the extracted features and classify them into one of the three categories: **Rock**, **Paper**, or **Scissors**.
