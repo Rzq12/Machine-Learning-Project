@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import tensorflow as tf
 import numpy as np
-
+import io
 # Load Model
 MODEL_PATH = "model/rockpaperscissors.h5"
 model = tf.keras.models.load_model(MODEL_PATH)
@@ -15,7 +15,7 @@ def predict():
     try:
         # Ambil data input berupa gambar
         file = request.files["file"]
-        img = tf.keras.preprocessing.image.load_img(file, target_size=(224, 224))
+        img = tf.keras.utils.load_img(io.BytesIO(file.read()), target_size=(100, 150))
         img_array = tf.keras.preprocessing.image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0)
         img_array /= 255.0  # Normalisasi gambar
