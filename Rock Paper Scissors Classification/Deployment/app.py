@@ -25,7 +25,7 @@ def predict():
         predicted_class = np.argmax(predictions, axis=1)[0]
 
         # Mapping hasil prediksi
-        class_names = ["Rock", "Paper", "Scissors"]
+        class_names = ["Paper", "Rock", "Scissors"]
         result = {"class": class_names[predicted_class], "confidence": float(np.max(predictions))}
 
         return jsonify(result)
