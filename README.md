@@ -107,7 +107,3 @@ This repository is licensed under the [MIT License](LICENSE). Feel free to use a
 ---
 
 Thank you for visiting this repository! If you find it useful, please don't forget to leave a ⭐.
-
----
-
-Feel free to adapt any part of this template to better suit your needs! 😊
