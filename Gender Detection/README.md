@@ -2,10 +2,10 @@
 
 ## 📑 Table of Contents
 
-- [Project Description](#project-description)
-- [Objective](#objective)
-- [Approach](#approach)
-- [Methods and Models](#methods-and-models)
+- [Project Description](#Project-Description)
+- [Objective](#Objective)
+- [Approach](#Approach)
+- [Methods and Models](#Methods-and-Models)
 
   - [1. Data Preprocessing](#1-data-preprocessing)
   - [2. Model Architecture](#2-model-architecture)
@@ -13,7 +13,7 @@
   - [4. Evaluation Metrics](#4-evaluation-metrics)
   - [5. Tools and Libraries](#5-tools-and-libraries)
 
-- [Model Evaluation Results](#model-evaluation-results)
+- [Model Evaluation Results](#Model-Evaluation-Results)
 - [Conclusion](#conclusion)
 
 ---
@@ -102,7 +102,7 @@ ResNet50 (Frozen except last 20 layers) ➜ GAP ➜ Dropout ➜ Dense(128) ➜ D
 
 ---
 
-## 🧪 Model Evaluation Results – Gender Classification with ResNet50
+## Model Evaluation Results
 
 Training was performed using **ResNet50** transferred from the pretrained ImageNet model and adapted for the gender classification task (male vs female). The dataset was split into training and validation sets. The model was evaluated over 20 epochs but stopped early due to no significant improvement in validation accuracy.
 
