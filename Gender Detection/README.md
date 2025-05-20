@@ -2,7 +2,7 @@
 
 ## Dataset
 
-[Gender-Dataset](https://www.kaggle.com/datasets/cashutosh/gender-classification-dataset)
+[Gender-Dataset by Ashutosh Chauhan](https://www.kaggle.com/datasets/cashutosh/gender-classification-dataset)
 
 ## 📑 Table of Contents
 
