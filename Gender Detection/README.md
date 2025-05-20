@@ -124,7 +124,7 @@ Training was performed using **ResNet50** transferred from the pretrained ImageN
 | ...            | —              | —          | —            | —          | —                                                      |
 | **Best Epoch** | **6**          | **95.69%** | **99.17%**   | **0.0216** | —                                                      |
 
----
+## [Plot-Training-History](images/Screenshot%202025-05-20%20103144.png)
 
 ## 🎯 Conclusion
 
@@ -139,11 +139,7 @@ Training was performed using **ResNet50** transferred from the pretrained ImageN
 
 To test the model on your own images, use the provided widget to input a file path and get a prediction with visual feedback:
 
-```python
-# Example:
-Image Path: /path/to/your/image.jpg
-Prediction: Male (Confidence: 93.25%)
-```
+[Predict-Gender](images/Screenshot%202025-05-20%20112648.png)
 
 ---
 
