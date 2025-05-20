@@ -6,10 +6,10 @@
 
 ## 📑 Table of Contents
 
-- [Project Description](#📌-Project-Description)
-- [Objective](#🎯-Objective)
-- [Approach](#🚀-Approach)
-- [Methods and Models](#🧠-Methods-and-Models)
+- [Project Description](#Project-Description)
+- [Objective](#Objective)
+- [Approach](#Approach)
+- [Methods and Models](#Methods-and-Models)
 
   - [1. Data Preprocessing](#1-data-preprocessing)
   - [2. Model Architecture](#2-model-architecture)
@@ -22,7 +22,7 @@
 
 ---
 
-## 📌 Project Description
+## Project Description
 
 Gender classification using facial images has wide applications in security systems, demographic data collection, and human-computer interaction. Leveraging the power of **deep learning** and **transfer learning**, this project builds an accurate gender classification model using the **ResNet50** architecture pretrained on ImageNet.
 
@@ -30,7 +30,7 @@ The dataset consists of labeled facial images categorized into male and female g
 
 ---
 
-## 🎯 Objective
+## Objective
 
 The primary objectives of this project are to:
 
@@ -40,7 +40,7 @@ The primary objectives of this project are to:
 
 ---
 
-## 🚀 Approach
+## Approach
 
 - Utilize **ResNet50** pretrained on ImageNet as a feature extractor.
 - Freeze most of the base layers to retain learned features while fine-tuning the last few.
@@ -49,7 +49,7 @@ The primary objectives of this project are to:
 
 ---
 
-## 🧠 Methods and Models
+## Methods and Models
 
 ### 1. Data Preprocessing
 
@@ -130,7 +130,7 @@ Training was performed using **ResNet50** transferred from the pretrained ImageN
 
 ![Plot-Training-History](images/Screenshot%202025-05-20%20103144.png)
 
-## 🎯 Conclusion
+## Conclusion
 
 - Using **ResNet50 with transfer learning** enabled efficient training even with a relatively small dataset.
 - **Data augmentation** and **regularization** were essential to prevent overfitting and improve generalization.
@@ -139,7 +139,7 @@ Training was performed using **ResNet50** transferred from the pretrained ImageN
 
 ---
 
-## 🖼️ Demo: Predict Gender from Custom Image
+## Demo: Predict Gender from Custom Image
 
 To test the model on your own images, use the provided widget to input a file path and get a prediction with visual feedback:
 
