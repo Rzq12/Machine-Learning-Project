@@ -2,10 +2,10 @@
 
 ## 📑 Table of Contents
 
-- [Project Description](#Project-Description)
-- [Objective](#Objective)
-- [Approach](#Approach)
-- [Methods and Models](#Methods-and-Models)
+- [Project Description](#📌-Project-Description)
+- [Objective](#🎯-Objective)
+- [Approach](#🚀-Approach)
+- [Methods and Models](#🧠-Methods-and-Models)
 
   - [1. Data Preprocessing](#1-data-preprocessing)
   - [2. Model Architecture](#2-model-architecture)
