@@ -49,7 +49,7 @@ Documentation Status: ✅ COMPLETED
     - ✅ Error handling documentation
     - ✅ Feature descriptions and usage examples
 
-Author: Machine Learning Dashboard Team
+Author: Riezqi
 Version: 1.0.0
 Created: 2025
 """
