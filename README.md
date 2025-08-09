@@ -49,9 +49,15 @@ Here is a list of the projects included in this repository:
    - **Description:** This project aims to leverage machine learning to classify different types of obesity based on factors influencing its development. By using predictive modeling, the project seeks to provide insights into obesity risk categories, which could serve as a foundation for early intervention strategies.
 
 4. [**Gender Classification**](https://github.com/Rzq12/Machine-Learning-Project/tree/main/Gender%20Detection)
+
    - **Models:** ResNet50
    - **Dataset:** Gender Dataset
    - **Description:** This project aims to leverage machine learning to classify gender based on facial image features. By using predictive modeling, the project seeks to provide accurate gender predictions, which could serve as a foundation for applications in security systems, personalized user experiences, and demographic analysis.
+
+5. [**Tabular Machine Learning Automation**](https://github.com/Rzq12/Machine-Learning-Project/tree/main/Machine%20Learning%20Dashboard)
+   - **Models:** Random Forest, Logistic Regression, etc
+   - **Dataset:** Any Tabular Dataset
+   - **Description:** An interactive Streamlit app designed to automate the end-to-end workflow of building and evaluating machine learning models for tabular data. The app supports both classification and regression tasks, with automatic detection of target type (binary or multiclass), customizable preprocessing, train-test split, cross-validation, multi-model comparison, and comprehensive evaluation metrics — all without writing a single line of code.
 
 ---
 
