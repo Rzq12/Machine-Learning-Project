@@ -1,3 +1,44 @@
+"""
+Machine Learning Dashboard - Main Streamlit Application
+
+This module contains the main Streamlit web application for the Machine Learning Dashboard.
+It provides an interactive interface for end-to-end machine learning workflows including
+data upload, preprocessing, model training, evaluation, and results visualization.
+
+The application guides users through a step-by-step process:
+1. Upload Data - Load CSV/Excel datasets
+2. Delete Columns - Remove unnecessary columns
+3. Task Selection - Choose classification or regression
+4. Target Column - Select the target variable
+5. Preprocessing - Handle missing values, encoding, scaling
+6. Data Split - Split into training and testing sets
+7. Cross Validation - Perform k-fold cross-validation
+8. Model Selection - Choose and train ML models
+9. Evaluation - Assess model performance
+10. Results - View comprehensive results and comparisons
+
+Features:
+    - Interactive data exploration and visualization
+    - Automatic task type detection
+    - Multiple preprocessing options
+    - Support for various ML algorithms
+    - Comprehensive model evaluation
+    - Interactive plots and charts
+    - Model performance comparison
+    - Download results functionality
+
+Dependencies:
+    - streamlit: Web application framework
+    - pandas: Data manipulation and analysis
+    - plotly: Interactive visualizations
+    - seaborn/matplotlib: Statistical plotting
+    - ml_backend: Custom ML backend module
+
+Author: Machine Learning Dashboard Team
+Version: 1.0.0
+Created: 2025
+"""
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -8,66 +49,102 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from ml_backend import MLBackend
 
-# Page configuration
+# ================================
+# PAGE CONFIGURATION AND SETUP
+# ================================
+
+# Configure Streamlit page settings for optimal user experience
 st.set_page_config(
-    page_title="Machine Learning Dashboard",
-    page_icon="🤖",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    page_title="Machine Learning Dashboard",  # Browser tab title
+    page_icon="🤖",                          # Browser tab icon
+    layout="wide",                           # Use full width of browser
+    initial_sidebar_state="expanded"          # Start with sidebar open
 )
 
-# Initialize session state
+# ================================
+# SESSION STATE INITIALIZATION
+# ================================
+
+# Initialize session state variables to maintain application state across reruns
+# This ensures data persists when users interact with the interface
+
 if 'ml_backend' not in st.session_state:
+    """Initialize the ML backend instance for handling all ML operations"""
     st.session_state.ml_backend = MLBackend()
+
 if 'data_loaded' not in st.session_state:
+    """Track whether dataset has been successfully loaded"""
     st.session_state.data_loaded = False
+
 if 'target_selected' not in st.session_state:
+    """Track whether target column has been selected"""
     st.session_state.target_selected = False
+
 if 'models_trained' not in st.session_state:
+    """Track whether ML models have been trained"""
     st.session_state.models_trained = False
 
-# Main title
+# ================================
+# MAIN INTERFACE LAYOUT
+# ================================
+
+# Main title and branding
 st.title("🤖 Machine Learning Dashboard")
 st.markdown("---")
 
-# Sidebar for navigation
+# ================================
+# NAVIGATION SIDEBAR
+# ================================
+
+# Create sidebar navigation for step-by-step workflow
 st.sidebar.title("📋 Navigation")
+
+# Define the complete ML workflow steps
 steps = [
-    "1. Upload Data",
-    "2. Delete Columns",
-    "3. Task Selection",
-    "4. Target Column",
-    "5. Preprocessing",
-    "6. Data Split",
-    "7. Cross Validation",
-    "8. Model Selection",
-    "9. Evaluation",
-    "10. Results"
+    "1. Upload Data",           # Load dataset from file
+    "2. Delete Columns",        # Remove unnecessary columns
+    "3. Task Selection",        # Choose classification vs regression
+    "4. Target Column",         # Select target variable
+    "5. Preprocessing",         # Data cleaning and preparation
+    "6. Data Split",           # Train/test split
+    "7. Cross Validation",     # Model validation
+    "8. Model Selection",      # Choose and train models
+    "9. Evaluation",          # Model performance assessment
+    "10. Results"             # Final results and comparison
 ]
 
+# Radio button for step selection - user can navigate between steps
 current_step = st.sidebar.radio("Select Step:", steps)
 
-# Step 1: Upload Data
+# ================================
+# STEP 1: DATA UPLOAD AND EXPLORATION
+# ================================
+
 if current_step == "1. Upload Data":
     st.header("📁 Upload Your Dataset")
     
+    # File uploader widget with support for CSV and Excel formats
     uploaded_file = st.file_uploader(
         "Choose a CSV or Excel file",
-        type=['csv', 'xlsx', 'xls'],
+        type=['csv', 'xlsx', 'xls'],  # Supported file formats
         help="Upload your dataset in CSV or Excel format"
     )
     
     if uploaded_file is not None:
+        # Show loading spinner while processing the file
         with st.spinner("Loading data..."):
             success, result = st.session_state.ml_backend.load_data(uploaded_file)
         
         if success:
+            # ---- SUCCESS: Display data information ----
             st.success("✅ Data loaded successfully!")
             st.session_state.data_loaded = True
             
-            # Display data info
+            # Get comprehensive data information
             data_info = st.session_state.ml_backend.get_data_info()
             
+            # ---- METRICS DISPLAY ----
+            # Show key dataset statistics in a clean layout
             col1, col2 = st.columns(2)
             with col1:
                 st.metric("Rows", data_info['shape'][0])
@@ -76,13 +153,17 @@ if current_step == "1. Upload Data":
             with col2:
                 missing_count = sum(data_info['missing_values'].values())
                 st.metric("Missing Values", missing_count)
-                st.metric("Memory Usage", f"{result.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
+                # Calculate and display memory usage
+                memory_mb = result.memory_usage(deep=True).sum() / 1024**2
+                st.metric("Memory Usage", f"{memory_mb:.2f} MB")
             
-            # Display data preview
+            # ---- DATA PREVIEW ----
+            # Show first few rows of the dataset
             st.subheader("📊 Data Preview")
             st.dataframe(data_info['head'], use_container_width=True)
             
-            # Display data types
+            # ---- COLUMN INFORMATION ----
+            # Display detailed information about each column
             st.subheader("🔢 Column Information")
             dtype_df = pd.DataFrame({
                 'Column': list(data_info['dtypes'].keys()),
@@ -92,47 +173,58 @@ if current_step == "1. Upload Data":
             st.dataframe(dtype_df, use_container_width=True)
             
         else:
+            # ---- ERROR HANDLING ----
             st.error(f"❌ Error loading data: {result}")
 
-# Step 2: Delete Columns
+# ================================
+# STEP 2: COLUMN DELETION (OPTIONAL)
+# ================================
+
 elif current_step == "2. Delete Columns":
     st.header("🗑️ Delete Columns (Optional)")
     
+    # Check if data has been loaded
     if not st.session_state.data_loaded:
         st.warning("⚠️ Please upload data first!")
     else:
+        # Get current dataset information
         data_info = st.session_state.ml_backend.get_data_info()
         
+        # Informational message about column deletion benefits
         st.info("💡 You can delete unnecessary columns to improve model performance and reduce complexity.")
         
-        # Display current columns with their info
+        # ---- CURRENT COLUMNS DISPLAY ----
         st.subheader("📋 Current Columns")
         
         col1, col2 = st.columns([2, 1])
         
         with col1:
-            # Create a dataframe showing column information
+            # Create comprehensive column information table
             column_info = pd.DataFrame({
                 'Column': list(data_info['dtypes'].keys()),
                 'Data Type': list(data_info['dtypes'].values()),
                 'Missing Values': [data_info['missing_values'][col] for col in data_info['dtypes'].keys()],
-                'Sample Values': [str(data_info['head'][col].iloc[0]) if not pd.isna(data_info['head'][col].iloc[0]) else 'NaN' 
-                                for col in data_info['dtypes'].keys()]
+                'Sample Values': [
+                    str(data_info['head'][col].iloc[0]) if not pd.isna(data_info['head'][col].iloc[0]) else 'NaN' 
+                    for col in data_info['dtypes'].keys()
+                ]
             })
             st.dataframe(column_info, use_container_width=True)
         
         with col2:
+            # Dataset summary metrics
             st.metric("Total Columns", len(data_info['columns']))
             st.metric("Total Rows", data_info['shape'][0])
         
-        # Column selection for deletion
+        # ---- COLUMN SELECTION FOR DELETION ----
         st.subheader("🎯 Select Columns to Delete")
         
-        # Multi-select for columns to delete
+        # Multi-select widget for choosing columns to remove
         columns_to_delete = st.multiselect(
             "Choose columns to delete:",
             options=data_info['columns'],
-            help="Select one or more columns that you want to remove from the dataset"
+            help="Select one or more columns that you want to remove from the dataset. "
+                 "Consider removing ID columns, irrelevant features, or columns with too many missing values."
         )
         
         if columns_to_delete:
@@ -190,6 +282,12 @@ elif current_step == "2. Delete Columns":
             - **Important features**: Domain knowledge is crucial
             - **Date/time columns**: Might need feature engineering instead of deletion
             """)
+
+# ================================
+# STEP 3: TASK TYPE SELECTION
+# ================================
+# Users choose between classification and regression based on their target variable
+# The system provides intelligent suggestions based on data analysis
 
 # Step 3: Task Selection
 elif current_step == "3. Task Selection":
@@ -736,13 +834,41 @@ elif current_step == "10. Results":
                             st.pyplot(fig_mpl)
                             plt.close(fig_mpl)
 
+# ================================
+# APPLICATION FOOTER
+# ================================
+
 # Footer
 st.markdown("---")
 st.markdown(
     """
     <div style='text-align: center; color: #666;'>
-        <p>🤖 Machine Learning Dashboard | Built with Streamlit</p>
+        <h4>🤖 Machine Learning Dashboard</h4>
+        <p>Complete End-to-End ML Workflow Solution</p>
+        
+        <h5>📋 Workflow Steps Covered:</h5>
+        <p>
+        • <strong>Data Upload & Exploration:</strong> Load CSV/Excel files with automatic analysis<br>
+        • <strong>Data Cleaning:</strong> Remove unnecessary columns and handle data quality<br>
+        • <strong>Task Selection:</strong> Automatic detection of classification vs regression tasks<br>
+        • <strong>Target Selection:</strong> Choose and validate target variables<br>
+        • <strong>Preprocessing:</strong> Handle missing values, encode categories, scale features<br>
+        • <strong>Data Splitting:</strong> Train/test splits with stratification support<br>
+        • <strong>Cross Validation:</strong> K-fold validation for robust model assessment<br>
+        • <strong>Model Training:</strong> Multiple algorithms (RF, SVM, Logistic Regression, etc.)<br>
+        • <strong>Evaluation:</strong> Comprehensive metrics and performance analysis<br>
+        • <strong>Results:</strong> Interactive visualizations and model comparison<br>
+        </p>
+        
+        <h5>🔧 Technical Features:</h5>
+        <p>
+        • Automatic preprocessing pipeline • Interactive data visualization<br>
+        • Multiple ML algorithms support • Comprehensive evaluation metrics<br>
+        • Cross-validation capabilities • Model performance comparison<br>
+        • Export functionality • Real-time feedback and guidance<br>
+        </p>
+        
+        <p><em>Built with Streamlit, scikit-learn, Plotly, and Pandas</em></p>
     </div>
-    """,
-    unsafe_allow_html=True
+    """, unsafe_allow_html=True
 )
