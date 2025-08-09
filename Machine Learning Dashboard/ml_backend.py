@@ -240,6 +240,16 @@ class MLBackend:
             
         except Exception as e:
             return False, f"Error deleting columns: {str(e)}"
+    def set_target_column(self, target_column):
+        """Set the target column for the ML backend"""
+        if self.data is None:
+            return False, "No data loaded"
+        
+        if target_column not in self.data.columns:
+            return False, f"Column '{target_column}' not found in data"
+        
+        self.target_column = target_column
+        return True, f"Target column set to '{target_column}'"
     
     def detect_task_type(self, target_column):
         """
@@ -403,6 +413,13 @@ class MLBackend:
         if self.data is None:
             return False, "No data loaded"
         
+        # Debug: Check if target column is set
+        if self.target_column is None:
+            return False, "Target column not set. Please select target column first."
+        
+        if self.target_column not in self.data.columns:
+            return False, f"Target column '{self.target_column}' not found in data"
+        
         processed_data = self.data.copy()
         
         # Handle missing values
@@ -410,39 +427,59 @@ class MLBackend:
             numeric_columns = processed_data.select_dtypes(include=[np.number]).columns
             categorical_columns = processed_data.select_dtypes(include=['object']).columns
             
-            # Fill numeric missing values with mean
+            # Fill numeric missing values with mean (exclude target column)
             for col in numeric_columns:
                 if col != self.target_column:
                     processed_data[col].fillna(processed_data[col].mean(), inplace=True)
             
-            # Fill categorical missing values with mode
+            # Fill categorical missing values with mode (exclude target column)
             for col in categorical_columns:
                 if col != self.target_column:
                     processed_data[col].fillna(processed_data[col].mode()[0] if not processed_data[col].mode().empty else 'Unknown', inplace=True)
         
-        # Encode categorical variables
+        # Encode categorical variables (exclude target column)
         if preprocessing_options.get('encode_categorical', False):
             categorical_columns = processed_data.select_dtypes(include=['object']).columns
-            le = LabelEncoder()
             
-            for col in categorical_columns:
-                if col != self.target_column:
-                    processed_data[col] = le.fit_transform(processed_data[col].astype(str))
+            # Filter out target column from categorical encoding
+            feature_categorical_columns = [col for col in categorical_columns if col != self.target_column]
+            
+            for col in feature_categorical_columns:
+                le = LabelEncoder()
+                processed_data[col] = le.fit_transform(processed_data[col].astype(str))
         
-        # Scale features
+        # Scale features (exclude target column)
         if preprocessing_options.get('scale_features', False):
             numeric_columns = processed_data.select_dtypes(include=[np.number]).columns
             feature_columns = [col for col in numeric_columns if col != self.target_column]
             
-            if preprocessing_options.get('scaler_type') == 'standard':
-                self.scaler = StandardScaler()
+            if len(feature_columns) > 0:  # Only scale if there are feature columns
+                if preprocessing_options.get('scaler_type') == 'standard':
+                    self.scaler = StandardScaler()
+                else:
+                    self.scaler = MinMaxScaler()
+                
+                processed_data[feature_columns] = self.scaler.fit_transform(processed_data[feature_columns])
             else:
-                self.scaler = MinMaxScaler()
-            
-            processed_data[feature_columns] = self.scaler.fit_transform(processed_data[feature_columns])
+                # No numeric features to scale
+                self.scaler = None
         
         self.data = processed_data
-        return True, "Preprocessing completed successfully"
+        
+        # Generate detailed preprocessing report
+        report_details = []
+        if preprocessing_options.get('handle_missing', False):
+            report_details.append("✅ Missing values handled (target column excluded)")
+        if preprocessing_options.get('encode_categorical', False):
+            report_details.append("✅ Categorical variables encoded (target column excluded)")
+        if preprocessing_options.get('scale_features', False):
+            if len(feature_columns) > 0:
+                report_details.append(f"✅ Features scaled using {preprocessing_options.get('scaler_type', 'standard')} method (target column excluded)")
+            else:
+                report_details.append("ℹ️ No numeric features found to scale")
+        
+        detailed_message = "Preprocessing completed successfully:\n" + "\n".join(report_details)
+        return True, detailed_message
     
     def split_data(self, target_column, test_size=0.2, random_state=42):
         """
