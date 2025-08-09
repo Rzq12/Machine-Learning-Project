@@ -84,19 +84,15 @@ st.set_page_config(
 # This ensures data persists when users interact with the interface
 
 if 'ml_backend' not in st.session_state:
-    """Initialize the ML backend instance for handling all ML operations"""
     st.session_state.ml_backend = MLBackend()
 
 if 'data_loaded' not in st.session_state:
-    """Track whether dataset has been successfully loaded"""
     st.session_state.data_loaded = False
 
 if 'target_selected' not in st.session_state:
-    """Track whether target column has been selected"""
     st.session_state.target_selected = False
 
 if 'models_trained' not in st.session_state:
-    """Track whether ML models have been trained"""
     st.session_state.models_trained = False
 
 # ================================
