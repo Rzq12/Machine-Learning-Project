@@ -22,7 +22,7 @@ Documentation Status: ✅ COMPLETED
     - ✅ Side effects and requirements documentation
     - ✅ Usage examples for all public methods
 
-Author: Machine Learning Dashboard Team
+Author: Riezqi
 Version: 1.0.0
 Created: 2025
 """
