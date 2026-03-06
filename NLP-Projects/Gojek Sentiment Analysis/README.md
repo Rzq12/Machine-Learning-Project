@@ -11,7 +11,6 @@ App: **Gojek** (`com.gojek.app`) — ≥ 11,000 Indonesian user reviews.
 - [Objective](#Objective)
 - [Approach](#Approach)
 - [Methods and Models](#Methods-and-Models)
-
   - [1. Data Collection (Scraping)](#1-data-collection-scraping)
   - [2. Data Preprocessing](#2-data-preprocessing)
   - [3. Feature Extraction](#3-feature-extraction)
@@ -28,6 +27,7 @@ App: **Gojek** (`com.gojek.app`) — ≥ 11,000 Indonesian user reviews.
 User reviews on the **Google Play Store** provide rich, real-world feedback on app quality and user experience. This project builds a **binary sentiment classification system** for Indonesian-language reviews of the **Gojek** super-app by scraping review data directly from the Play Store and training three different machine learning schemes.
 
 Reviews are labeled based on their star rating:
+
 - **Rating 1–3** → `negatif`
 - **Rating 4–5** → `positif`
 
@@ -76,11 +76,11 @@ The primary objectives of this project are to:
 
 ### 3. Feature Extraction
 
-| Scheme | Method | Details |
-|--------|--------|---------|
-| Scheme 1 | **TF-IDF** | `max_features=30,000`, unigram + bigram, `sublinear_tf=True`, `min_df=3` |
-| Scheme 2 | **Word2Vec** | `vector_size=100`, `window=5`, `min_count=2`, 10 epochs; averaged into sentence vector |
-| Scheme 3 | **BERT Tokenizer** | `indobenchmark/indobert-base-p1`, `max_length=128` |
+| Scheme   | Method             | Details                                                                                |
+| -------- | ------------------ | -------------------------------------------------------------------------------------- |
+| Scheme 1 | **TF-IDF**         | `max_features=30,000`, unigram + bigram, `sublinear_tf=True`, `min_df=3`               |
+| Scheme 2 | **Word2Vec**       | `vector_size=100`, `window=5`, `min_count=2`, 10 epochs; averaged into sentence vector |
+| Scheme 3 | **BERT Tokenizer** | `indobenchmark/indobert-base-p1`, `max_length=128`                                     |
 
 ### 4. Model Schemes
 
@@ -129,29 +129,29 @@ All three schemes are trained on the same 80/20 stratified split of the Gojek re
 
 ### 🔖 Training Schemes Summary
 
-| # | Scheme | Feature Extraction | Algorithm |
-|---|--------|--------------------|-----------|
-| 1 | SVM + TF-IDF | TF-IDF (unigram + bigram) | LinearSVC |
-| 2 | Random Forest + Word2Vec | Word2Vec (avg, 100-dim) | RandomForestClassifier |
-| 3 | IndoBERT Transformer | BERT Tokenizer (max_len=128) | indobert-base-p1 |
+| #   | Scheme                   | Feature Extraction           | Algorithm              |
+| --- | ------------------------ | ---------------------------- | ---------------------- |
+| 1   | SVM + TF-IDF             | TF-IDF (unigram + bigram)    | LinearSVC              |
+| 2   | Random Forest + Word2Vec | Word2Vec (avg, 100-dim)      | RandomForestClassifier |
+| 3   | IndoBERT Transformer     | BERT Tokenizer (max_len=128) | indobert-base-p1       |
 
 ### 🏆 Model Performance Comparison
 
-| Scheme | Feature Extraction | Test Accuracy |
-|--------|--------------------|:-------------:|
-| SVM | TF-IDF | ~92%+ |
-| Random Forest | Word2Vec | ~85%+ |
-| **IndoBERT** | **BERT Tokenizer** | **~95%+** ✅ |
+| Scheme        | Feature Extraction | Test Accuracy |
+| ------------- | ------------------ | :-----------: |
+| SVM           | TF-IDF             |     ~92%+     |
+| Random Forest | Word2Vec           |     ~85%+     |
+| **IndoBERT**  | **BERT Tokenizer** | **~95%+** ✅  |
 
 > IndoBERT is the best-performing scheme, achieving the target accuracy of ≥ 92% by leveraging contextual transformer embeddings pretrained on Indonesian text.
 
 ### 📊 Dataset Statistics
 
-| Split | Samples |
-|-------|---------|
-| Training Set | ~8,800+ |
-| Test Set | ~2,200+ |
-| **Total** | **≥ 11,000** |
+| Split        | Samples      |
+| ------------ | ------------ |
+| Training Set | ~8,800+      |
+| Test Set     | ~2,200+      |
+| **Total**    | **≥ 11,000** |
 
 ---
 
